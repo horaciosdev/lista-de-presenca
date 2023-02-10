@@ -9,9 +9,9 @@ export const Home = () => {
       <input type="text" placeholder="Digite o nome..." />
       <button type="button">Adicionar</button>
 
-      <Card />
-      <Card />
-      <Card />
+      <Card name="Horacio" time="10:23:23" />
+      <Card name="Raquel" time="11:23:23" />
+      <Card name="Ana" time="12:23:23" />
     </div>
   );
 };

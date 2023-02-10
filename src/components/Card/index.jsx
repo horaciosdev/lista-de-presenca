@@ -1,10 +1,11 @@
 import "./styles.css";
 
-export const Card = () => {
+export const Card = (props) => {
+  const { name, time } = props;
   return (
     <div className="card">
-      <strong>Horacio Schumann</strong>
-      <small>10:15:23</small>
+      <strong>{name}</strong>
+      <small>{time}</small>
     </div>
   );
 };
