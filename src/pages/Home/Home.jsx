@@ -22,7 +22,13 @@ export const Home = () => {
 
   return (
     <div className="container">
-      <h1>Lista de Presença</h1>
+      <header>
+        <h1>Lista de Presença</h1>
+        <div>
+          <strong>Horácio</strong>
+          <img src="https://github.com/horaciosdev.png" alt="" />
+        </div>
+      </header>
       <input
         type="text"
         placeholder="Digite o nome..."
