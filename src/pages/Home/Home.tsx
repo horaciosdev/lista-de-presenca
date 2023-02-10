@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
-import { Card } from "../../components/Card/Card";
+import { Card, CardProps } from "../../components/Card/Card";
+
+type ProfileResponse = {
+  name: string;
+  avatar_url: string;
+};
+
+type User = {
+  name: string;
+  avatar: string;
+};
 
 export const Home = () => {
   const [studentName, setStudentName] = useState("");
-  const [students, setStudends] = useState([]);
-  const [user, setUser] = useState({ name: "", avatar: "" });
+  const [students, setStudends] = useState<CardProps[]>([]);
+  const [user, setUser] = useState<User>({} as User);
 
   function handleAddStudent() {
     const newStudent = {
@@ -22,11 +32,14 @@ export const Home = () => {
   }
 
   useEffect(() => {
-    fetch("https://api.github.com/users/horaciosdev")
-      .then((response) => response.json())
-      .then((data) => {
-        setUser({ name: data.name, avatar: data.avatar_url });
-      });
+    async function fetchData() {
+      const response = await fetch("https://api.github.com/users/horaciosdev");
+      const data = (await response.json()) as ProfileResponse;
+
+      setUser({ name: data.name, avatar: data.avatar_url });
+    }
+
+    fetchData();
   }, []);
 
   return (
